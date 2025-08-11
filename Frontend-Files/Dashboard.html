@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyShare</title>
+    <link rel="stylesheet" href="CSS-Files/Dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="\images\EduNest-logo-2.png" alt="" height="80px" width="80px"> EduNest
+            </a>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for notes, subjects, or users...">
+                </div>
+            </div>
+            <div class="nav-auth">
+                <a href="upload.html" class="btn btn-primary">
+                    📤 Upload Notes
+                </a>
+                <div class="profile-dropdown">
+                    <button class="profile-btn" onclick="toggleDropdown()">
+                        <div class="profile-avatar">👨‍🎓</div>
+                        <div class="profile-info">
+                            
+                            <!--This is fill by java Script by  -->
+                            <div class="profile-name"><span id="profile-fullname"></span></div>
+                            <div class="profile-university"><span id="profile-universityName"></span></div>
+
+
+                        </div>
+                        <span style="color: #7f8c8d; font-size: 0.8rem;">▼</span>
+                    </button>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="Profile.html" class="dropdown-item">👤 My Profile</a>
+                        <a href="#" class="dropdown-item">📚 My Notes</a>
+                        <a href="#" class="dropdown-item">❤️ Favorites</a>
+                        <a href="#" class="dropdown-item">⚙️ Settings</a>
+                        <a href="#" class="dropdown-item">🔒 Privacy</a>
+                        <a href="#" class="dropdown-item">❓ Help</a>
+                        <a href="#" class="dropdown-item" style="color: #dc3545;" onclick="logout()">🚪 Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1 class="welcome-title">Welcome back, <span id="user-profileName"></span>! 👋</h1>
+            <p class="welcome-subtitle">Ready to share knowledge and help your fellow students succeed?</p>
+            <div class="quick-actions">
+                <a href="upload.html" class="quick-action">
+                    📤 Upload New Notes
+                </a>
+                <a href="#" class="quick-action">
+                    🔍 Browse Notes
+                </a>
+                <a href="#" class="quick-action">
+                    👥 Find Study Groups
+                </a>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div class="stat-number">24</div>
+                <div class="stat-label">Notes Shared</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📥</div>
+                <div class="stat-number">156</div>
+                <div class="stat-label">Total Downloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-number">89</div>
+                <div class="stat-label">Likes Received</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Rank This Week</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Notes</h2>
+                    <a href="#" class="section-action">View All</a>
+                </div>
+                
+                <div class="note-card">
+                    <div class="note-title">Advanced Algorithms - Dynamic Programming</div>
+                    <div class="note-meta">
+                        <span class="note-subject">Computer Science</span>
+                        <span>2 days ago</span>
+                    </div>
+                    <div class="note-stats">
+                        <div class="note-stat">
+                            <span>👀</span>
+                            <span>23 views</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>📥</span>
+                            <span>15 downloads</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>❤️</span>
+                            <span>8 likes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-title">Machine Learning Fundamentals</div>
+                    <div class="note-meta">
+                        <span class="note-subject">Computer Science</span>
+                        <span>1 week ago</span>
+                    </div>
+                    <div class="note-stats">
+                        <div class="note-stat">
+                            <span>👀</span>
+                            <span>45 views</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>📥</span>
+                            <span>32 downloads</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>❤️</span>
+                            <span>19 likes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-title">Data Structures - Binary Trees</div>
+                    <div class="note-meta">
+                        <span class="note-subject">Computer Science</span>
+                        <span>2 weeks ago</span>
+                    </div>
+                    <div class="note-stats">
+                        <div class="note-stat">
+                            <span>👀</span>
+                            <span>67 views</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>📥</span>
+                            <span>41 downloads</span>
+                        </div>
+                        <div class="note-stat">
+                            <span>❤️</span>
+                            <span>25 likes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Activity</h2>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">❤️</div>
+                    <div class="activity-content">
+                        <div class="activity-text">Sarah liked your "ML Fundamentals" notes</div>
+                        <div class="activity-time">2 hours ago</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">📥</div>
+                    <div class="activity-content">
+                        <div class="activity-text">12 new downloads on "Binary Trees"</div>
+                        <div class="activity-time">4 hours ago</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">💬</div>
+                    <div class="activity-content">
+                        <div class="activity-text">New comment on "Dynamic Programming"</div>
+                        <div class="activity-time">1 day ago</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">🏆</div>
+                    <div class="activity-content">
+                        <div class="activity-text">You earned "Top Contributor" badge</div>
+                        <div class="activity-time">2 days ago</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">👥</div>
+                    <div class="activity-content">
+                        <div class="activity-text">5 new followers this week</div>
+                        <div class="activity-time">3 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trending-section">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Trending Notes</h2>
+                <a href="#" class="section-action">View All</a>
+            </div>
+            
+            <div class="trending-item">
+                <div class="trending-rank">1</div>
+                <div class="trending-content">
+                    <div class="trending-title">Calculus III - Vector Fields</div>
+                    <div class="trending-subject">Mathematics</div>
+                </div>
+                <div class="trending-stats">
+                    <div>234 downloads</div>
+                    <div>89 likes</div>
+                </div>
+            </div>
+
+            <div class="trending-item">
+                <div class="trending-rank">2</div>
+                <div class="trending-content">
+                    <div class="trending-title">Organic Chemistry - Reaction Mechanisms</div>
+                    <div class="trending-subject">Chemistry</div>
+                </div>
+                <div class="trending-stats">
+                    <div>187 downloads</div>
+                    <div>76 likes</div>
+                </div>
+            </div>
+
+            <div class="trending-item">
+                <div class="trending-rank">3</div>
+                <div class="trending-content">
+                    <div class="trending-title">Physics - Quantum Mechanics Basics</div>
+                    <div class="trending-subject">Physics</div>
+                </div>
+                <div class="trending-stats">
+                    <div>156 downloads</div>
+                    <div>68 likes</div>
+                </div>
+            </div>
+
+            <div class="trending-item">
+                <div class="trending-rank">4</div>
+                <div class="trending-content">
+                    <div class="trending-title">World History - Renaissance Period</div>
+                    <div class="trending-subject">History</div>
+                </div>
+                <div class="trending-stats">
+                    <div>143 downloads</div>
+                    <div>52 likes</div>
+                </div>
+            </div>
+
+            <div class="trending-item">
+                <div class="trending-rank">5</div>
+                <div class="trending-content">
+                    <div class="trending-title">Statistics - Hypothesis Testing</div>
+                    <div class="trending-subject">Mathematics</div>
+                </div>
+                <div class="trending-stats">
+                    <div>128 downloads</div>
+                    <div>45 likes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS-Files/Dashboard.js"></script>
+</body>
+</html>

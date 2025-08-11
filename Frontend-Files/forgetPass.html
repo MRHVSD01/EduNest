@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password - EduNest</title>
+    <link rel="stylesheet" href="CSS-Files/forgetPass.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/EduNest-logo-2.png" alt="EduNest Logo" height="80px" width="80px"> EduNest
+            </a>
+            <div class="nav-auth">
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reset-container">
+        <div class="reset-card">
+            <div class="reset-header">
+                <h1>Reset Password</h1>
+                <p>Enter your email address and we'll send you a link to reset your password</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                Password reset email sent! Please check your inbox and follow the instructions.
+            </div>
+
+            <div class="info-box">
+                <p>💡 Make sure to check your spam folder if you don't receive the email within a few minutes.</p>
+            </div>
+
+            <form id="resetForm" action="/api/reset-password" method="post">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your registered email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    Send Reset Link
+                </button>
+
+                <div class="loading" id="loadingMessage">
+                    <div class="spinner"></div>
+                    Sending reset email...
+                </div>
+            </form>
+
+            <div class="reset-steps">
+                <h3>What happens next?</h3>
+                <ol>
+                    <li>We'll send a secure link to your email</li>
+                    <li>Click the link in the email</li>
+                    <li>Create a new password</li>
+                    <li>Sign in with your new password</li>
+                </ol>
+            </div>
+
+            <div class="back-to-signin">
+                Remember your password? <a href="signin.html">Back to Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS-Files/forgetPass.js">
+       
+    </script>
+</body>
+</html>

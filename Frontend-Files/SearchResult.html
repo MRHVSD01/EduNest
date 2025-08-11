@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - StudyShare</title>
+    <link rel="stylesheet" href="CSS-Files/SearchResult.css">
+</head>
+<body>
+    <!-- HTML Structure for Grid -->
+
+     <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                📚 EduNest
+            </a>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for notes, subjects, or users..." value="machine learning">
+                </div>
+            </div>
+            <div class="nav-auth">
+                <a href="#" class="btn btn-primary">
+                    📤 Upload Notes
+                </a>
+                <div class="profile-dropdown">
+                    <button class="profile-btn" onclick="toggleDropdown()">
+                        <div class="profile-avatar">👨‍🎓</div>
+                        <div class="profile-info">
+                            <div class="profile-name">Alex Johnson</div>
+                            <div class="profile-university">MIT</div>
+                        </div>
+                        <span style="color: #7f8c8d; font-size: 0.8rem;">▼</span>
+                    </button>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="Profile.html" class="dropdown-item">👤 My Profile</a>
+                        <a href="#" class="dropdown-item">📚 My Notes</a>
+                        <a href="#" class="dropdown-item">❤️ Favorites</a>
+                        <a href="#" class="dropdown-item">⚙️ Settings</a>
+                        <a href="#" class="dropdown-item">🔒 Privacy</a>
+                        <a href="#" class="dropdown-item">❓ Help</a>
+                        <a href="index.html" class="dropdown-item" style="color: #dc3545;">🚪 Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<div class="container">
+    <div class="search-header">
+        <div class="search-info">
+            <h1 class="search-query" id="searchQuery">Results for "machine learning"</h1>
+            <div class="search-stats" id="searchStats">About 247 results (0.23 seconds)</div>
+        </div>
+        <div class="search-filters">
+            <button class="filter-btn active" onclick="filterResults('all')">All</button>
+            <button class="filter-btn" onclick="filterResults('notes')">Notes</button>
+            <button class="filter-btn" onclick="filterResults('users')">Users</button>
+            <button class="filter-btn" onclick="filterResults('study-groups')">Study Groups</button>
+            <button class="filter-btn" onclick="filterResults('recent')">Recent</button>
+            <button class="filter-btn" onclick="filterResults('most-downloaded')">Most Downloaded</button>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="results-section" id="resultsSection">
+            <!-- Results will be populated here by JavaScript -->
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Filter by Subject</h3>
+                <div class="subject-filter">
+                    <div class="subject-item">
+                        <input type="checkbox" class="subject-checkbox" id="cs" checked onchange="filterBySubject()">
+                        <span class="subject-name">Computer Science</span>
+                        <span class="subject-count">156</span>
+                    </div>
+                    <div class="subject-item">
+                        <input type="checkbox" class="subject-checkbox" id="math" onchange="filterBySubject()">
+                        <span class="subject-name">Mathematics</span>
+                        <span class="subject-count">89</span>
+                    </div>
+                    <div class="subject-item">
+                        <input type="checkbox" class="subject-checkbox" id="stats" onchange="filterBySubject()">
+                        <span class="subject-name">Statistics</span>
+                        <span class="subject-count">45</span>
+                    </div>
+                    <div class="subject-item">
+                        <input type="checkbox" class="subject-checkbox" id="physics" onchange="filterBySubject()">
+                        <span class="subject-name">Physics</span>
+                        <span class="subject-count">23</span>
+                    </div>
+                    <div class="subject-item">
+                        <input type="checkbox" class="subject-checkbox" id="econ" onchange="filterBySubject()">
+                        <span class="subject-name">Economics</span>
+                        <span class="subject-count">12</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Related Searches</h3>
+                <div>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">🤖</div>
+                        <div class="related-content">
+                            <div class="related-title">Artificial Intelligence</div>
+                            <div class="related-meta">45 notes</div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">🐍</div>
+                        <div class="related-content">
+                            <div class="related-title">Python Programming</div>
+                            <div class="related-meta">134 notes</div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">📈</div>
+                        <div class="related-content">
+                            <div class="related-title">Algorithms</div>
+                            <div class="related-meta">78 notes</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Contributors</h3>
+                <div>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">👩‍🎓</div>
+                        <div class="related-content">
+                            <div class="related-title">Sarah Chen</div>
+                            <div class="related-meta">Stanford • 24 notes</div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">👨‍🎓</div>
+                        <div class="related-content">
+                            <div class="related-title">Michael Rodriguez</div>
+                            <div class="related-meta">MIT • 18 notes</div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="related-icon">👩‍🎓</div>
+                        <div class="related-content">
+                            <div class="related-title">Emily Wang</div>
+                            <div class="related-meta">UC Berkeley • 15 notes</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Quick Actions</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <a href="#" class="action-btn primary" style="justify-content: center;">
+                        📤 Upload Notes
+                    </a>
+                    <a href="#" class="action-btn" style="justify-content: center;">
+                        🔔 Save Search
+                    </a>
+                    <a href="#" class="action-btn" style="justify-content: center;">
+                        📧 Email Results
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="JS-Files/SearchResult.js"></script>
+</body>
+</html>

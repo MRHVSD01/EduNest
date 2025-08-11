@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - StudyShare</title>
+    <link rel="stylesheet" href="CSS-Files/signup.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images\EduNest-logo-2.png" alt="" height="80px" width="80px"> EduNest
+            </a>
+            <div class="nav-auth">
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="signup-header">
+                <h1>Join StudyShare</h1>
+                <p>Create your account and start sharing knowledge</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                Account created successfully! Welcome to StudyShare.
+            </div>
+
+            <form id="signupForm" action="/api/register" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="university">University <span class="required">*</span></label>
+                        <select id="university" name="university" required>
+                            <option value="">Select your university</option>
+                            <option value="harvard">Harvard University</option>
+                            <option value="stanford">Stanford University</option>
+                            <option value="mit">MIT</option>
+                            <option value="caltech">Caltech</option>
+                            <option value="princeton">Princeton University</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="universityError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="graduationYear">Graduation Year</label>
+                        <select id="graduationYear" name="graduationYear">
+                            <option value="">Select year</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength"></div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</button>
+                    </div>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms" class="checkbox-label">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter" class="checkbox-label">
+                        Send me updates about new features and study tips
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    Create Account
+                </button>
+
+                <div class="loading" id="loadingMessage">
+                    <div class="spinner"></div>
+                    Creating your account...
+                </div>
+            </form>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <div class="social-signup">
+                <button class="btn-social" onclick="signupWithGoogle()">
+                    <span>🔍</span> Google
+                </button>
+                <button class="btn-social" onclick="signupWithFacebook()">
+                    <span>📘</span> Facebook
+                </button>
+            </div>
+
+            <div class="signin-link">
+                Already have an account? <a href="singin.html">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS-Files/signup.js"></script>
+</body>
+</html>

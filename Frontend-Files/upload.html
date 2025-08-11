@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Notes - EduNest</title>
+    <link rel="stylesheet" href="CSS-Files/Upload.css">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css"> -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Dashboard.html" class="logo">
+                <img src="\images\EduNest-logo-2.png" alt="" height="80px" width="80px"> EduNest
+            </a>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for notes, subjects, or users...">
+                </div>
+            </div>
+            <div class="nav-auth">
+                <a href="#" class="btn btn-primary active">
+                    📤 Upload Notes
+                </a>
+                <div class="profile-dropdown">
+                    <button class="profile-btn" onclick="toggleDropdown()">
+                        <div class="profile-avatar">👨‍🎓</div>
+                        <div class="profile-info">
+                            
+                             <!--This is fill by java Script by  -->
+                            <div class="profile-name"><span id="profile-fullname"></span></div>
+                            <div class="profile-university"><span id="profile-universityName"></span></div>
+                        </div>
+                        <span style="color: #7f8c8d; font-size: 0.8rem;">▼</span>
+                    </button>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="Profile.html" class="dropdown-item">👤 My Profile</a>
+                        <a href="Dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <a href="#" class="dropdown-item">📚 My Notes</a>
+                        <a href="#" class="dropdown-item">❤️ Favorites</a>
+                        <a href="#" class="dropdown-item">⚙️ Settings</a>
+                        <a href="#" class="dropdown-item">🔒 Privacy</a>
+                        <a href="#" class="dropdown-item">❓ Help</a>
+                        <a href="#" class="dropdown-item" style="color: #dc3545;" onclick="logout()">🚪 Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="toast-container hidden">
+        <div class="toast-sign"><p id="toast-mark"></p></div>
+        <div class="toast-msg">
+            <h3 id="toast-type"></h3>
+            <p id="toast-des"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="upload-header">
+            <h1 class="upload-title">📤 Upload Your Notes</h1>
+            <p class="upload-subtitle">Share your knowledge and help fellow students succeed!</p>
+        </div>
+
+        <div class="upload-container">
+            <form class="upload-form" id="uploadForm" enctype="multipart/form-data" action="/api/upload-form" method="post">
+                <div class="form-section">
+                    <h2 class="section-title">📝 Note Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="noteTitle" class="form-label">Note Title *</label>
+                        <input type="text" id="noteTitle" name="noteTitle" class="form-input" 
+                               placeholder="e.g., Advanced Algorithms - Dynamic Programming" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="branch" class="form-label">Branch *</label>
+                            <select id="category" name="branch" class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="information-technology">Information Technology</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="category" name="subject" class="form-select" required>
+                                <option value="">Select Subject</option>
+                                <option value="DBMS">DBMS (Database Management Systems)</option>
+                                <option value="DBMS">DBMS (Data Structures and Algorithms)</option>
+                                <option value="OOPs">OOPs (Object-Oriented Programming)</option>
+                                <option value="TOC">TOC (Theory of Computation)</option>
+                                <option value="POC">POC (Principles of Communication)</option>
+                                <option value="OS">OS (Operating Systems)</option>
+                                <option value="SE">SE (Software Engineering)</option>
+                                <option value="CN">CN (Computer Networks)</option>
+                                <option value="CD">CD (Compiler Design)</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="semester" class="form-label">Semester *</label>
+                            <select id="semester" name="semester" class="form-select" required>
+                                <option value="">Select Semester</option>
+                                <option value="first">I</option>
+                                <option value="second">II</option>
+                                <option value="third">III</option>
+                                <option value="forth">IV</option>
+                                <option value="fifth">V</option>
+                                <option value="sixth">VI</option>
+                                <option value="seventh">VII</option>
+                                <option value="eighth">VIII</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="university" class="form-label">College/ University *</label>
+                            <input type="text" id="university" name="university" class="form-input" 
+                                   placeholder="e.g., SKIT" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course" class="form-label">Course Code *</label>
+                            <input type="text" id="course" name="course" class="form-input" 
+                                   placeholder="e.g., 3IT4-24" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" name="description" class="form-textarea" rows="4" 
+                                  placeholder="Brief description of your notes content, topics covered, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags" class="form-label">Tags (Optional)</label>
+                        <input type="text" id="tags" name="tags" class="form-input" 
+                               placeholder="e.g., algorithms, data structures, programming (separated by commas)">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">📁 File Upload</h2>
+                    
+                    <!-- <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📄</div>
+                        <h3>Drag & Drop your PDF files here</h3>
+                        <p>or click to browse</p>
+                        <p class="upload-info">Maximum file size: 5MB | Supported formats: PDF only</p>
+                        <input type="file" id="fileInput" name="files[]" accept=".pdf" multiple hidden>
+                    </div>
+
+                    <div class="file-list" id="fileList"></div> -->
+
+                    <div class="upload-area" id="uploadArea">
+                        <!-- Dropzone will automatically add content here -->
+                    </div>
+                    <div class="file-preview-container" id="filePreviewContainer" style="display: none;">
+                        <h3 class="preview-title">📁 Selected Files</h3>
+                        <div class="files-grid" id="filesGrid">
+                            <!-- notes files is show here just after add -->
+                             
+                        </div>
+                    </div>
+
+<!-- -------# File card for an idea #--------- -->
+
+<!-- <div class="file-card">
+    <div class="file-icon">📄</div>
+    <div class="file-info">
+        <div class="file-name">Sample Document.pdf</div>
+        <div class="file-size">2.5 MB</div>
+        <div class="file-status ready">Ready to upload</div>
+    </div>
+    <div class="file-actions">
+        <button class="file-remove-btn">×</button>
+    </div>
+</div> -->
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">⚙️ Upload Settings</h2>
+                    
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <input type="checkbox" id="allowDownload" name="allowDownload" checked>
+                            <label for="allowDownload">Allow downloads</label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <input type="checkbox" id="allowComments" name="allowComments" checked>
+                            <label for="allowComments">Allow comments and feedback</label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <input type="checkbox" id="notifyActivity" name="notifyActivity" checked>
+                            <label for="notifyActivity">Notify me about activity on this note</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="reset-Btn" class="btn btn-secondary">
+                        🔄 Reset Form
+                    </button>
+                    <button type="submit" id="upload-Btn" class="btn btn-primary">
+                        📤 Upload Notes
+                    </button>
+                </div>
+
+        <!-- Files List code... -->
+                <div id="uploadResults" class="upload-results" style="display: none;">
+                    <h4>Uploaded Files:</h4>
+                    <ul id="uploadedFilesList"></ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="upload-tips">
+            <h3>💡 Tips for Better Uploads</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <div class="tip-icon">📝</div>
+                    <div class="tip-content">
+                        <h4>Clear Titles</h4>
+                        <p>Use descriptive titles that include the subject and topic</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">🏷️</div>
+                    <div class="tip-content">
+                        <h4>Add Tags</h4>
+                        <p>Include relevant tags to help others find your notes</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">📄</div>
+                    <div class="tip-content">
+                        <h4>High Quality</h4>
+                        <p>Ensure your PDFs are clear and well-organized</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">📚</div>
+                    <div class="tip-content">
+                        <h4>Detailed Description</h4>
+                        <p>Write a brief description of what your notes cover</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script> -->
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
+    <script src="JS-Files/Upload.js"></script>
+</body>
+</html>

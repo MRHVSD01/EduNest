@@ -1,0 +1,44 @@
+# =========================
+# Node dependencies
+# =========================
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# =========================
+# Environment files (secrets)
+# =========================
+.env
+.env.local
+.env.*.local
+
+# =========================
+# OS / Editor junk files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Build outputs (frontend & backend)
+# =========================
+build/
+dist/
+
+# =========================
+# Frontend specific
+# =========================
+Frontend-Files/node_modules/
+Frontend-Files/dist/
+Frontend-Files/build/
+
+# =========================
+# Backend specific
+# =========================
+Backend-Files/node_modules/
+
+# =========================
+# Uploaded files (user content)
+# =========================
+Backend-Files/uploads/

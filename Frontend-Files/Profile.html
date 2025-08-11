@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - StudyShare</title>
+    <link rel="stylesheet" href="CSS-Files/Profile.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="\images\EduNest-logo-2.png" alt="" height="80px" width="80px"> EduNest
+            </a>
+            <div class="nav-auth">
+                <a href="Dashboard.html" class="btn btn-outline">Dashboard</a>
+                <a href="upload.html" class="btn btn-outline">Upload</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-header">
+            <h1>My Profile</h1>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <div class="profile-avatar">
+                    <div class="avatar-img" onclick="uploadAvatar()">
+                        👨‍🎓
+                        <!-- <button class="avatar-upload" onclick="uploadAvatar()">📷</button> -->
+                    </div>
+                    <div class="profile-name"><span id="profile-fullname"></span></div>
+                    <div class="profile-university"><span id="profile-universityName"></span></div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">Notes Shared</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89</div>
+                        <div class="stat-label">Likes</div>
+                    </div>
+                </div>
+
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span id="user-email">alex.johnson@mit.edu</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🎓</span>
+                        <span>Senior • Class of 2024</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>Cambridge, MA</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>Joined January 2022</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link">🔗</a>
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+
+            <div class="profile-main">
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">About</h2>
+                        <button class="section-action" onclick="toggleEdit('about')">Edit</button>
+                    </div>
+                    <div class="about-display" id="aboutDisplay">
+                        <p class="about-text">
+                            Computer Science senior at MIT with a passion for machine learning and data science. 
+                            I love sharing my notes and helping fellow students succeed in their academic journey. 
+                            My notes focus on algorithms, data structures, and theoretical computer science.
+                        </p>
+                        <p class="about-text">
+                            When I'm not coding, you can find me participating in hackathons, contributing to open-source projects, 
+                            or mentoring underclassmen. Always happy to collaborate and learn from others!
+                        </p>
+                    </div>
+                    <div class="edit-about" id="aboutEdit">
+                        <textarea id="aboutText" placeholder="Tell us about yourself...">Computer Science senior at MIT with a passion for machine learning and data science. I love sharing my notes and helping fellow students succeed in their academic journey. My notes focus on algorithms, data structures, and theoretical computer science.
+
+When I'm not coding, you can find me participating in hackathons, contributing to open-source projects, or mentoring underclassmen. Always happy to collaborate and learn from others!</textarea>
+                        <div class="edit-actions">
+                            <button class="save-btn" onclick="saveAbout()">Save</button>
+                            <button class="cancel-btn" onclick="cancelEdit('about')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">My Notes</h2>
+                        <button class="section-action">View All</button>
+                    </div>
+                    
+                    <div class="tabs">
+                        <button class="tab active" onclick="switchTab('recent')">Recent</button>
+                        <button class="tab" onclick="switchTab('popular')">Most Popular</button>
+                        <button class="tab" onclick="switchTab('subjects')">By Subject</button>
+                    </div>
+
+                    <div class="tab-content active" id="recent">
+                        <div class="notes-grid">
+                            <div class="note-card">
+                                <div class="note-title">Advanced Algorithms - Dynamic Programming</div>
+                                <div class="note-meta">
+                                    <span class="note-subject">Computer Science</span>
+                                    <span>2 days ago</span>
+                                </div>
+                                <p>Comprehensive notes on dynamic programming techniques, including memoization, tabulation, and optimization problems.</p>
+                                <div class="note-stats">
+                                    <div class="note-stat">
+                                        <span>👀</span>
+                                        <span>23</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>📥</span>
+                                        <span>15</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>❤️</span>
+                                        <span>8</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="note-card">
+                                <div class="note-title">Machine Learning Fundamentals</div>
+                                <div class="note-meta">
+                                    <span class="note-subject">Computer Science</span>
+                                    <span>1 week ago</span>
+                                </div>
+                                <p>Introduction to supervised and unsupervised learning, with practical examples and mathematical foundations.</p>
+                                <div class="note-stats">
+                                    <div class="note-stat">
+                                        <span>👀</span>
+                                        <span>45</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>📥</span>
+                                        <span>32</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>❤️</span>
+                                        <span>19</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="note-card">
+                                <div class="note-title">Data Structures - Binary Trees</div>
+                                <div class="note-meta">
+                                    <span class="note-subject">Computer Science</span>
+                                    <span>2 weeks ago</span>
+                                </div>
+                                <p>Complete guide to binary trees, including traversal algorithms, balancing techniques, and implementation details.</p>
+                                <div class="note-stats">
+                                    <div class="note-stat">
+                                        <span>👀</span>
+                                        <span>67</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>📥</span>
+                                        <span>41</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>❤️</span>
+                                        <span>25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="popular">
+                        <div class="notes-grid">
+                            <div class="note-card">
+                                <div class="note-title">Data Structures - Binary Trees</div>
+                                <div class="note-meta">
+                                    <span class="note-subject">Computer Science</span>
+                                    <span>2 weeks ago</span>
+                                </div>
+                                <p>Complete guide to binary trees, including traversal algorithms, balancing techniques, and implementation details.</p>
+                                <div class="note-stats">
+                                    <div class="note-stat">
+                                        <span>👀</span>
+                                        <span>67</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>📥</span>
+                                        <span>41</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>❤️</span>
+                                        <span>25</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="note-card">
+                                <div class="note-title">Machine Learning Fundamentals</div>
+                                <div class="note-meta">
+                                    <span class="note-subject">Computer Science</span>
+                                    <span>1 week ago</span>
+                                </div>
+                                <p>Introduction to supervised and unsupervised learning, with practical examples and mathematical foundations.</p>
+                                <div class="note-stats">
+                                    <div class="note-stat">
+                                        <span>👀</span>
+                                        <span>45</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>📥</span>
+                                        <span>32</span>
+                                    </div>
+                                    <div class="note-stat">
+                                        <span>❤️</span>
+                                        <span>19</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="subjects">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📊</div>
+                            <p>Subject breakdown coming soon!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Achievements</h2>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-title">Top Contributor</div>
+                            <div class="achievement-desc">Shared 20+ high-quality notes</div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">❤️</div>
+                            <div class="achievement-title">Community Favorite</div>
+                            <div class="achievement-desc">Received 50+ likes on notes</div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">📈</div>
+                            <div class="achievement-title">Rising Star</div>
+                            <div class="achievement-desc">100+ downloads in a month</div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-title">Specialist</div>
+                            <div class="achievement-desc">Expert in Computer Science</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS-Files/Profile.js"></script>
+</body>
+</html>
