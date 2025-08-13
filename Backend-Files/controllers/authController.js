@@ -188,7 +188,8 @@ const forgetPassword = async (req, res) => {
   const existingUser = await user.findOne({ email });
   if (!existingUser) {
     return res.status(400).json({
-      message: "User NOT FOUND",
+      message: false,
+      // message: "User Not Found",
     });
   }
   const token = crypto.randomBytes(32).toString('hex');
@@ -219,7 +220,8 @@ const forgetPassword = async (req, res) => {
 
   await transporter.sendMail(mailOptions);
 
-  res.json({ message: 'Reset link sent to your email.' });
+  // res.json({ message: 'Reset link sent to your email.' });
+  res.json({ message: true });
 
 };
 

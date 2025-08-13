@@ -12,8 +12,11 @@
             .then(data => {
                 const successMessage = document.getElementById('successMessage');
                 successMessage.style.display = 'block';
-                successMessage.innerText = "This Email is not Found !!"
-
+                if(!data.message){
+                    successMessage.innerText = "This Email is not Found !!"
+                }else{
+                    successMessage.innerText = "Password reset email sent!!! Please check your inbox and follow the instructions."
+                }
                 console.log(data.message);
             })
             .catch(err=>{
