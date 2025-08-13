@@ -90,61 +90,70 @@ while helping me grow as a **full-stack developer**.
 ## 📂 Folder Structure
 
 EduNest/
-├── 📁 Backend-Files/ – Backend logic and server configurations
-│ ├── 📁 controllers/ – Handles request logic for different routes
-│ │ ├── 📄 authController.js – Authentication-related logic (login, signup, etc.)
-│ │ └── 📄 notesController.js – Notes upload, fetch, and management logic
-│ ├── 📁 middlewares/ – Middleware functions for request processing
-│ │ ├── 📄 authMiddleware.js – Protects routes and verifies JWT tokens
-│ │ └── 📄 multerMiddleware.js – Handles file uploads
-│ ├── 📁 models/ – Mongoose models for database collections
-│ │ ├── 📄 User.js – User schema and model
-│ │ └── 📄 Notes.js – Notes schema and model
-│ ├── 📁 routes/ – API route definitions
-│ │ ├── 📄 authRoutes.js – Authentication-related endpoints
-│ │ └── 📄 notesRoutes.js – Notes-related endpoints
-│ ├── 📁 utils/ – Helper functions
-│ │ ├── 📄 sendEmail.js – Nodemailer email sending utility
-│ │ └── 📄 generateToken.js – JWT token generation
-│ ├── ⚙️ .env – Environment variables (ignored in Git)
-│ ├── 📄 server.js – Main server entry point
-│ └── 📄 package.json – Backend dependencies and scripts
-
-├── 📁 Frontend-Files/ – Frontend UI and client-side logic
-│ ├── 📁 CSS-Files/ – All CSS styling files
-│ │ ├── 📄 Dashboard.css
-│ │ ├── 📄 forgetPass.css
-│ │ ├── 📄 newPassword.css
-│ │ ├── 📄 Profile.css
-│ │ ├── 📄 SearchResult.css
-│ │ ├── 📄 signin.css
-│ │ ├── 📄 signup.css
-│ │ ├── 📄 style.css
-│ │ └── 📄 Upload.css
-│ ├── 📁 images/ – Project images and assets
-│ │ ├── 🖼️ EduNest-logo-2.png
-│ │ └── 🖼️ EduNest-Logo.png
-│ ├── 📁 JS-Files/ – All frontend JavaScript files
-│ │ ├── 📄 Dashboard.js
-│ │ ├── 📄 forgetPass.js
-│ │ ├── 📄 newPassword.js
-│ │ ├── 📄 Profile.js
-│ │ ├── 📄 script.js
-│ │ ├── 📄 SearchResult.js
-│ │ ├── 📄 signin.js
-│ │ ├── 📄 signup.js
-│ │ └── 📄 Upload.js
-│ ├── 📄 Dashboard.html
-│ ├── 📄 forgetPass.html
-│ ├── 📄 index.html
-│ ├── 📄 newPassword.html
-│ ├── 📄 Profile.html
-│ ├── 📄 Search.html
-│ ├── 📄 SearchPage.html
-│ ├── 📄 SearchResult.html
-│ ├── 📄 signin.html
-│ ├── 📄 signup.html
-│ └── 📄 upload.html
-
-├── 📄 README.md – Project documentation
-└── 📄 package.json – Project dependencies (if monorepo)
+│
+├── 📁 Backend-Files/                  # Backend logic and server configurations
+│   ├── 📁 controllers/                # Handles request logic for different routes
+│   │   ├── 📄 authController.js       # Authentication-related logic (login, signup, etc.)
+│   │   └── 📄 notesController.js      # Notes upload, fetch, and management logic
+│   │
+│   ├── 📁 middlewares/                # Middleware functions for request processing
+│   │   ├── 📄 authMiddleware.js       # Protects routes and verifies JWT tokens
+│   │   └── 📄 multerMiddleware.js     # Handles file uploads
+│   │
+│   ├── 📁 models/                     # Mongoose models for database collections
+│   │   ├── 📄 User.js                  # User schema and model
+│   │   └── 📄 Notes.js                 # Notes schema and model
+│   │
+│   ├── 📁 routes/                     # API route definitions
+│   │   ├── 📄 authRoutes.js           # Authentication-related endpoints
+│   │   └── 📄 notesRoutes.js          # Notes-related endpoints
+│   │
+│   ├── 📁 utils/                      # Helper functions
+│   │   ├── 📄 sendEmail.js            # Nodemailer email sending utility
+│   │   └── 📄 generateToken.js        # JWT token generation
+│   │
+│   ├── ⚙️ .env                         # Environment variables (ignored in Git)
+│   ├── 📄 server.js                   # Main server entry point
+│   └── 📄 package.json                # Backend dependencies and scripts
+│
+├── 📁 Frontend-Files/                 # Frontend UI and client-side logic
+│   ├── 📁 CSS-Files/                  # All CSS styling files
+│   │   ├── 📄 Dashboard.css
+│   │   ├── 📄 forgetPass.css
+│   │   ├── 📄 newPassword.css
+│   │   ├── 📄 Profile.css
+│   │   ├── 📄 SearchResult.css
+│   │   ├── 📄 signin.css
+│   │   ├── 📄 signup.css
+│   │   ├── 📄 style.css
+│   │   └── 📄 Upload.css
+│   │
+│   ├── 📁 images/                     # Project images and assets
+│   │   ├── 🖼️ EduNest-logo-2.png
+│   │   └── 🖼️ EduNest-Logo.png
+│   │
+│   ├── 📁 JS-Files/                   # All frontend JavaScript files
+│   │   ├── 📄 Dashboard.js
+│   │   ├── 📄 forgetPass.js
+│   │   ├── 📄 newPassword.js
+│   │   ├── 📄 Profile.js
+│   │   ├── 📄 script.js
+│   │   ├── 📄 SearchResult.js
+│   │   ├── 📄 signin.js
+│   │   ├── 📄 signup.js
+│   │   └── 📄 Upload.js
+│   │
+│   ├── 📄 Dashboard.html
+│   ├── 📄 forgetPass.html
+│   ├── 📄 index.html
+│   ├── 📄 newPassword.html
+│   ├── 📄 Profile.html
+│   ├── 📄 Search.html
+│   ├── 📄 SearchPage.html
+│   ├── 📄 SearchResult.html
+│   ├── 📄 signin.html
+│   ├── 📄 signup.html
+│   └── 📄 upload.html
+│
+├── 📄 README.md                       # Project documentation
+└── 📄 package.json                    # Project dependencies (if monorepo)
