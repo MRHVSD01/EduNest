@@ -70,3 +70,19 @@ while helping me grow as a **full-stack developer**.
 - Git & GitHub for version control
 - Postman for API testing
 
+
+## ✨ Features
+
+**Security & Authentication**
+- **User Authentication** – Secure signup and login using JWT authentication.
+- **Route Guarding (Protected Routes)** – Restricts access to certain pages or APIs unless the user is logged in, ensuring secure and authorized usage.
+- **Secure Data Handling** – Passwords encrypted using bcrypt and files handled securely via Multer.
+- **Forgot & Reset Password** – Recover account securely via email.
+
+**Core Functionality**
+- **Upload Notes** – Students can upload study material in various formats (PDF, DOCX, PPT, etc.).
+- **Profile Management** – Update personal details and view your uploaded files.
+- **Responsive Design** – Works smoothly on both desktop and mobile devices.
+- *(Planned)* **Browse Notes** – Will allow users to view all uploaded notes with details like subject and uploader.
+- *(Planned)* **Download Notes** – Will allow users to download notes instantly for offline study.
+- *(Planned)* **Search Functionality** – Will allow users to find notes by keyword or subject.
