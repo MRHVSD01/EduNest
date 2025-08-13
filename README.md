@@ -17,6 +17,7 @@ It’s designed to **simplify knowledge sharing** within educational communities
 - [Contact](#-contact)
 
 📜 About the Project
+
 EduNest is a simple yet powerful notes sharing platform built specially for college students. The idea came from my own experience — at the start of every semester, my friends and I would create Google Drive folders to share notes. While it worked, it often became messy and unorganized. That’s when I thought, why not create a dedicated platform where students can easily upload, download, and browse each other’s notes in one place?
 
 With EduNest, any registered student can:
