@@ -38,3 +38,35 @@ This project became my **project-based learning journey** — by the end, I gain
 
 EduNest is not just a project for me — it’s a **personal milestone** that turned a real-life problem into a working solution,  
 while helping me grow as a **full-stack developer**.
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- HTML5, CSS3, JavaScript
+- Responsive UI with custom CSS
+- Client-side form validation
+
+**Backend:**
+- Node.js
+- Express.js
+
+**Database:**
+- MongoDB with Mongoose
+
+**Authentication & Security:**
+- JSON Web Tokens (JWT) for authentication
+- Bcrypt for password hashing
+- Middleware for route protection
+
+**File Handling & Uploads:**
+- Multer for file uploads
+- Local storage for uploaded files (can be extended to cloud storage)
+
+**Email Services:**
+- Nodemailer for sending password reset & verification emails
+
+**Other Tools:**
+- RESTful API architecture
+- Git & GitHub for version control
+- Postman for API testing
+
