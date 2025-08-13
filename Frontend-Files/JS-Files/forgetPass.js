@@ -10,6 +10,10 @@
 
             }).then(response => response.json())
             .then(data => {
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+                successMessage.innerText = "This Email is not Found !!"
+
                 console.log(data.message);
             })
             .catch(err=>{
