@@ -207,7 +207,9 @@ const forgetPassword = async (req, res) => {
     },
   });
 
-  const resetURL = `http://localhost:5000/reset-password/${token}`;
+  const resetURL = `${process.env.BASE_URL}/reset-password/${token}`;
+
+  // const resetURL = `http://localhost:5000/reset-password/${token}`;
 
   const mailOptions = {
     from: "EduNest <mr.hvsd01@gmail.com>",
