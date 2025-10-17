@@ -1,133 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StudyShare - Your Class Notes Hub</title>
-    <link rel="stylesheet" href="/CSS-Files/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/CSS-Files/style.css" />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="\images\EduNest-logo-2.png" alt="" height="80px" width="80px"> EduNest
-            </a>
-            <div class="nav-auth">
-                <a href="signin.html" class="btn btn-outline">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
-            </div>
-            <div class="mobile-menu" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="nav-container">
+        <a href="Dashboard.html" class="logo">
+          <img
+            src="\images\EduNest-logo-2.png"
+            alt=""
+            height="80px"
+            width="80px"
+          />
+          EduNest
+        </a>
+        <div class="nav-auth">
+          <a href="signin.html" class="btn btn-outline">Sign In</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
         </div>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Find Your Study Notes</h1>
-            <p>Search through thousands of student notes, assignments, and study materials shared by your classmates</p>
-            
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Search for notes, subjects, or topics..." id="searchInput">
-                <button class="search-btn" onclick="performSearch()">Search</button>
-            </div>
-            
-            <div class="search-suggestions">
-                <p>Popular searches:</p>
-                <div class="suggestion-tags">
-                    <span class="tag" onclick="setSearch('Mathematics')">Mathematics</span>
-                    <span class="tag" onclick="setSearch('Physics')">Physics</span>
-                    <span class="tag" onclick="setSearch('Chemistry')">Chemistry</span>
-                    <span class="tag" onclick="setSearch('Biology')">Biology</span>
-                    <span class="tag" onclick="setSearch('Computer Science')">Computer Science</span>
-                </div>
-            </div>
+      <div class="hero-content">
+        <h1>Find Your Study Notes</h1>
+        <p>
+          Search through thousands of student notes, assignments, and study
+          materials shared by your classmates
+        </p>
+
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search for notes, subjects, or topics..."
+            id="searchInput"
+          />
+          <button class="search-btn" onclick="performSearch()">Search</button>
         </div>
+
+        <div class="search-suggestions">
+          <p>Popular searches:</p>
+          <div class="suggestion-tags">
+            <span class="tag" onclick="setSearch('Mathematics')"
+              >Mathematics</span
+            >
+            <span class="tag" onclick="setSearch('Physics')">Physics</span>
+            <span class="tag" onclick="setSearch('Chemistry')">Chemistry</span>
+            <span class="tag" onclick="setSearch('Biology')">Biology</span>
+            <span class="tag" onclick="setSearch('Computer Science')"
+              >Computer Science</span
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="popular-notes">
-        <div class="container">
-            <div class="section-header">
-                <h2>Popular Notes This Week</h2>
-                <p>Discover the most downloaded and highly-rated notes from your classmates</p>
-            </div>
-
-            <div class="notes-grid" id="notesGrid">
-                <!-- Notes will be populated by JavaScript -->
-            </div>
-
-            <div class="loading hidden" id="loading">
-                <p>Loading more notes...</p>
-            </div>
-
-            <div class="load-more">
-                <button class="btn-load-more" id="loadMoreBtn" onclick="loadMoreNotes()">
-                    View More Notes
-                </button>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Popular Notes This Week</h2>
+          <p>
+            Discover the most downloaded and highly-rated notes from your
+            classmates
+          </p>
         </div>
+
+        <div class="notes-grid" id="notesGrid">
+          <!-- Notes will be populated by JavaScript -->
+        </div>
+
+        <div class="loading hidden" id="loading">
+          <p>Loading more notes...</p>
+        </div>
+
+        <div class="load-more">
+          <button
+            class="btn-load-more"
+            id="loadMoreBtn"
+            onclick="loadMoreNotes()"
+          >
+            View More Notes
+          </button>
+        </div>
+      </div>
     </section>
 
- 
     <section class="features">
-        <div class="container">
-            <h2>How it works</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Search & Discover</h3>
-                    <p>Find notes by subject, topic, or keyword. Our smart search helps you discover exactly what you need.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📤</div>
-                    <h3>Upload & Share</h3>
-                    <p>Share your notes with classmates. Upload PDFs, images, and documents in just a few clicks.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Rate & Review</h3>
-                    <p>Help others find the best notes by rating and reviewing shared content from your peers.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure & Private</h3>
-                    <p>Your notes are secure and only accessible to verified students from your class or college.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2>How it works</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Search & Discover</h3>
+            <p>
+              Find notes by subject, topic, or keyword. Our smart search helps
+              you discover exactly what you need.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📤</div>
+            <h3>Upload & Share</h3>
+            <p>
+              Share your notes with classmates. Upload PDFs, images, and
+              documents in just a few clicks.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <h3>Rate & Review</h3>
+            <p>
+              Help others find the best notes by rating and reviewing shared
+              content from your peers.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure & Private</h3>
+            <p>
+              Your notes are secure and only accessible to verified students
+              from your class or college.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3 id="notesCount">0</h3>
-                    <p>Notes Available</p>
-                </div>
-                <div class="stat-item">
-                    <h3 id="studentsCount">0</h3>
-                    <p>Active Students</p>
-                </div>
-                <div class="stat-item">
-                    <h3 id="subjectsCount">0</h3>
-                    <p>Subjects</p>
-                </div>
-                <div class="stat-item">
-                    <h3 id="downloadsCount">0</h3>
-                    <p>Downloads</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3 id="notesCount">0</h3>
+            <p>Notes Available</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="studentsCount">0</h3>
+            <p>Active Students</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="subjectsCount">0</h3>
+            <p>Subjects</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="downloadsCount">0</h3>
+            <p>Downloads</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 StudyShare. Built for students, by students.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2024 StudyShare. Built for students, by students.</p>
+      </div>
     </footer>
 
     <script src="JS-Files/script.js"></script>
-</body>
+  </body>
 </html>
