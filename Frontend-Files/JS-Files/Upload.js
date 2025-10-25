@@ -3,41 +3,40 @@ function toggleDropdown() {
   dropdown.classList.toggle("show");
 }
 
- window.onload = function(){
-        const profileName = document.getElementById('profile-fullname');
-        const profileUniversity = document.getElementById('profile-universityName');
-        const userProfileName = document.getElementById('user-profileName');
+window.onload = function () {
+  const profileName = document.getElementById("profile-fullname");
+  const profileUniversity = document.getElementById("profile-universityName");
+  const userProfileName = document.getElementById("user-profileName");
 
-        const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
-        if(!token){
-            window.location.href = '/signin';
-            return;
-        }
+  if (!token) {
+    window.location.href = "/signin";
+    return;
+  }
 
-        fetch('/api/verify-session', {
-            headers: {
-                'Authorization' : `Bearer ${token}`
-            }
-        })
-        .then(response => response.json())
-        .then(data =>{
-            if(!data.success){
-                localStorage.removeItem('token');
-                window.location.href = '/signin';
-            }
-            console.log("Welcome", data.user);
-            const firstName = data.user.firstName;
-            let university = data.user.university;
+  fetch("/api/verify-session", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.success) {
+        localStorage.removeItem("token");
+        window.location.href = "/signin";
+      }
+      console.log("Welcome", data.user);
+      const firstName = data.user.firstName;
+      let university = data.user.university;
 
-            profileName.innerText = firstName;
-            profileUniversity.innerText = university;
-            userProfileName.innerText = firstName;
+      if (profileName) profileName.innerText = firstName;
+      if (profileUniversity) profileUniversity.innerText = university;
+      if (userProfileName) userProfileName.innerText = firstName;
 
-            // window.location.href = '/Dashboard';
-        });
-    };
-
+      // window.location.href = '/Dashboard';
+    });
+};
 
 // Close dropdown when clicking outside
 document.addEventListener("click", function (event) {
@@ -66,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
     maxFiles: 5, // Max 5 files at once
     addRemoveLinks: true, // Show remove buttons
     autoProcessQueue: false,
-    previewTemplate: '<div style="display:none;"></div>'
+    previewTemplate: '<div style="display:none;"></div>',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`, // ✅ Add token here
+    },
   });
 
   // if (!uploadElement.querySelector(".dz-message")) {
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>or click to browse</p>
             <p class="upload-info">Maximum file size: 5MB | Supported formats: PDF only</p>
     `;
-}
+  }
 
   const uploadBtn = document.getElementById("upload-Btn");
   const resetBtn = document.getElementById("reset-Btn");
@@ -89,42 +91,50 @@ document.addEventListener("DOMContentLoaded", function () {
   myDropzone.on("addedfile", function (file) {
     console.log("File added:", file.name);
 
-    const filesGrid = document.getElementById('filesGrid');
-    const filePreviewContainer = document.getElementById('filePreviewContainer');
+    const filesGrid = document.getElementById("filesGrid");
+    const filePreviewContainer = document.getElementById(
+      "filePreviewContainer"
+    );
 
     const fileCard = createFileCard(file);
 
-    filesGrid.insertAdjacentHTML('beforeend',fileCard);
+    filesGrid.insertAdjacentHTML("beforeend", fileCard);
 
-    filePreviewContainer.style.display='block';
+    filePreviewContainer.style.display = "block";
 
     uploadBtn.disabled = false;
 
-    const removeBtn = filesGrid.querySelector(`[data-file-name="${file.name}"] .file-remove-btn`);
-    const fileName = file.name
-    removeBtn.addEventListener('click', ()=>{
-        const fileToRemove = myDropzone.files.find(file => file.name === fileName );
-        if(fileToRemove){
-          myDropzone.removeFile(fileToRemove);
-        }
-        const removeFileCard = document.querySelector(`[data-file-name="${fileName}"]`);
-        if(removeFileCard){
-          removeFileCard.remove();
-        }
-        if(myDropzone.files.length===0){
-          const filePreviewContainer = document.getElementById('filePreviewContainer');
-          filePreviewContainer.style.display = 'none';
-          uploadBtn.disabled = true;
-        }
-    })
+    const removeBtn = filesGrid.querySelector(
+      `[data-file-name="${file.name}"] .file-remove-btn`
+    );
+    const fileName = file.name;
+    removeBtn.addEventListener("click", () => {
+      const fileToRemove = myDropzone.files.find(
+        (file) => file.name === fileName
+      );
+      if (fileToRemove) {
+        myDropzone.removeFile(fileToRemove);
+      }
+      const removeFileCard = document.querySelector(
+        `[data-file-name="${fileName}"]`
+      );
+      if (removeFileCard) {
+        removeFileCard.remove();
+      }
+      if (myDropzone.files.length === 0) {
+        const filePreviewContainer = document.getElementById(
+          "filePreviewContainer"
+        );
+        filePreviewContainer.style.display = "none";
+        uploadBtn.disabled = true;
+      }
+    });
   });
 
-  
   myDropzone.on("removedfile", function (file) {
     console.log("File removed:", file.name);
     uploadBtn.disabled = true;
   });
-
 
   myDropzone.on("success", function (file, response) {
     console.log("Upload Success:", response);
@@ -136,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("uploadResults").style.display = "block";
   });
-
 
   myDropzone.on("error", function (file, errorMessage) {
     console.log("Upload error:", errorMessage);
@@ -151,12 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("uploadResults").style.display = "block";
   });
 
-
   uploadBtn.addEventListener("click", () => {
     console.log("Starting upload...");
     myDropzone.processQueue();
   });
-
 
   resetBtn.addEventListener("click", () => {
     myDropzone.removeAllFiles();
@@ -167,11 +174,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     document.getElementById("uploadResults").style.display = "none";
 
-    const filesGrid = document.getElementById('filesGrid');
-    if(filesGrid){
-      filesGrid.innerHTML = '';
+    const filesGrid = document.getElementById("filesGrid");
+    if (filesGrid) {
+      filesGrid.innerHTML = "";
     }
-
   });
 
   const uploadForm = document.getElementById("uploadForm");
@@ -198,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // ✅ Add token here
       },
       body: JSON.stringify(formObject),
     })
@@ -206,33 +213,33 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.success) {
           uploadForm.reset();
           // alert("file is successfully uploaded!!!");
-          toast('Success!', 'Your notes is uploaded', '✅');
+          toast("Success!", "Your notes is uploaded", "✅");
           console.log("Notes Title:", data.notesDetail.title);
           console.log("Upload Date:", data.notesDetail.date);
         } else {
           // alert(data.message || "file upload failed!!!, Please try again");
           console.log(data.message);
-          toast('Failed!', data.message, '❌' )
+          toast("Failed!", data.message, "❌");
         }
       })
       .catch((error) => {
         console.log("Error:", error);
         // alert("an error occurred while uplaoding file. Please try again!");
-        toast('Failed!', 'an error occurred', '❌' )
+        toast("Failed!", "an error occurred", "❌");
       });
   });
 });
 
-const toastContainer = document.querySelector('.hidden')
-const toastSign = document.querySelector('#toast-mark');
-const toastType = document.querySelector('#toast-type');
-const toastDescription = document.querySelector('#toast-des');
+const toastContainer = document.querySelector(".hidden");
+const toastSign = document.querySelector("#toast-mark");
+const toastType = document.querySelector("#toast-type");
+const toastDescription = document.querySelector("#toast-des");
 
-function toast(type, message, sign){
-  toastContainer.classList.remove('hidden')
-  toastContainer.classList.add('show')
-  if(type === 'Failed!'){
-    toastContainer.style.backgroundColor = 'red';
+function toast(type, message, sign) {
+  toastContainer.classList.remove("hidden");
+  toastContainer.classList.add("show");
+  if (type === "Failed!") {
+    toastContainer.style.backgroundColor = "red";
   }
   toastSign.innerText = sign;
   toastType.innerText = type;
@@ -241,15 +248,15 @@ function toast(type, message, sign){
 
 // console.log(formatFileSize(1080921));
 //---file size formater----
-function formatFileSize(bytes){
-    if(bytes<1024){
-      reduceSize = `${bytes} bytes`;
-      return reduceSize;
-    }else if(bytes<1048576){
-      return `${(bytes/1024).toFixed(2)} KB`;
-    }else{
-      return `${(bytes/1048576).toFixed(2)} MB`;
-    }
+function formatFileSize(bytes) {
+  if (bytes < 1024) {
+    reduceSize = `${bytes} bytes`;
+    return reduceSize;
+  } else if (bytes < 1048576) {
+    return `${(bytes / 1024).toFixed(2)} KB`;
+  } else {
+    return `${(bytes / 1048576).toFixed(2)} MB`;
+  }
 }
 
 // const testFile = {
@@ -260,11 +267,11 @@ function formatFileSize(bytes){
 // console.log(createFileCard(testFile));
 
 //-----file card----------
-function createFileCard(file){
-    const fileName = file.name;
-    const fileSize = formatFileSize(file.size);
+function createFileCard(file) {
+  const fileName = file.name;
+  const fileSize = formatFileSize(file.size);
 
-    return `
+  return `
         <div class="file-card" data-file-name="${fileName}">
             <div class="file-icon">📄</div>
             <div class="file-info">
@@ -279,26 +286,29 @@ function createFileCard(file){
         `;
 }
 
-
 //---remove button of preview files------
 
-function removeFile(fileName){
-    alert("remove btn clicked")
-    const fileToRemove = myDropzone.files.find(file => file.name === fileName );
-    console.log(fileToRemove);
-    if(fileToRemove){
-      myDropzone.removeFile(fileToRemove);
-    }
+function removeFile(fileName) {
+  alert("remove btn clicked");
+  const fileToRemove = myDropzone.files.find((file) => file.name === fileName);
+  console.log(fileToRemove);
+  if (fileToRemove) {
+    myDropzone.removeFile(fileToRemove);
+  }
 
-    const removeFileCard = document.querySelector(`[data-file-name="${fileName}"]`);
-    console.log(removeFileCard);
-    if(removeFileCard){
-      removeFileCard.remove();
-    }
+  const removeFileCard = document.querySelector(
+    `[data-file-name="${fileName}"]`
+  );
+  console.log(removeFileCard);
+  if (removeFileCard) {
+    removeFileCard.remove();
+  }
 
-    if(myDropzone.files.length===0){
-      const filePreviewContainer = document.getElementById('filePreviewContainer');
-      filePreviewContainer.style.display = 'none';
-      uploadBtn.disabled = true;
-    }
+  if (myDropzone.files.length === 0) {
+    const filePreviewContainer = document.getElementById(
+      "filePreviewContainer"
+    );
+    filePreviewContainer.style.display = "none";
+    uploadBtn.disabled = true;
+  }
 }

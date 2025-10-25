@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notes - EduNest</title>
+    <link rel="stylesheet" href="CSS-Files/Dashboard.css" />
+  </head>
+  <body>
+    <!-- Navbar (copied from Dashboard.html) -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="Dashboard.html" class="logo">
+          <img
+            src="\images\EduNest-logo-2.png"
+            alt=""
+            height="80px"
+            width="80px"
+          />
+          EduNest
+        </a>
+        <div class="nav-center">
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search your notes..."
+            />
+          </div>
+        </div>
+        <div class="nav-auth">
+          <a href="upload.html" class="btn btn-primary">📤 Upload Notes</a>
+          <div class="profile-dropdown">
+            <button class="profile-btn" onclick="toggleDropdown()">
+              <div class="profile-avatar">👨‍🎓</div>
+              <div class="profile-info">
+                <div class="profile-name">
+                  <span id="profile-fullname"></span>
+                </div>
+                <div class="profile-university">
+                  <span id="profile-universityName"></span>
+                </div>
+              </div>
+              <span style="color: #7f8c8d; font-size: 0.8rem">▼</span>
+            </button>
+            <div class="dropdown-menu" id="profileDropdown">
+              <a href="Profile.html" class="dropdown-item">👤 My Profile</a>
+              <a href="MyNotes.html" class="dropdown-item">📚 My Notes</a>
+              <a href="#" class="dropdown-item">❤️ Favorites</a>
+              <a href="#" class="dropdown-item">⚙️ Settings</a>
+              <a href="#" class="dropdown-item">🔒 Privacy</a>
+              <a href="#" class="dropdown-item">❓ Help</a>
+              <a
+                href="#"
+                class="dropdown-item"
+                style="color: #dc3545"
+                onclick="logout()"
+                >🚪 Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- My Notes Section -->
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">📚 My Uploaded Notes</h2>
+        <a href="upload.html" class="btn btn-primary">+ Add New Note</a>
+      </div>
+
+      <div id="myNotesContainer">
+        <!-- Notes will be loaded dynamically via JS -->
+        <p style="color: #7f8c8d">Loading your notes...</p>
+      </div>
+    </div>
+
+    <script src="JS-Files/Dashboard.js"></script>
+    <script src="JS-Files/MyNotes.js"></script>
+  </body>
+</html>
