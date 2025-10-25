@@ -113,7 +113,7 @@
 
 // module.exports = { uploadFormDetail, uploadNotes, getUserNotes };
 
-const Notes = require("../models/Notes");
+const Notes = require("../models/notes");
 
 // Upload notes file info
 const uploadNotes = (req, res) => {
